@@ -43,3 +43,13 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
 print( "Accuracy of 10NN (1/distance weights): %.2f %%" %(100*accuracy_score(y_test, y_pred)) )
+
+def myweight(distances):
+    sigma2 = .5 # we can change this number
+    return np.exp(-distances**2/sigma2)
+
+clf = neighbors.KNeighborsClassifier(n_neighbors = 10, p = 2, weights = myweight)
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
+
+print( "Accuracy of 10NN (customized weights): %.2f %%" %(100*accuracy_score(y_test, y_pred)) )
