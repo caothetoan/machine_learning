@@ -40,6 +40,10 @@ image = cmap(norm(A))
 
 import scipy.misc
 scipy.misc.imsave('aa.png', image)
+<<<<<<< HEAD
+=======
+#Chọn một vài ảnh từ mỗi cluster.
+>>>>>>> 6ed05bc6980a8728794818b2eaaabdaae4f414cd
 
 print(type(pred_label))
 print(pred_label.shape)
