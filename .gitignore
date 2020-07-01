@@ -1,0 +1,10 @@
+traffic-sign/.DS_Store
+traffic-sign/data
+traffic-sign/data/.DS_Store
+traffic-sign/data/Meta.csv
+traffic-sign/data/Meta.tar
+traffic-sign/data/Test.csv
+traffic-sign/data/Test.tar
+traffic-sign/data/Train.csv
+traffic-sign/data/Train.tar
+traffic-sign/data/*

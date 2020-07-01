@@ -23,7 +23,7 @@ print("[INFO] loading facial landmark predictor...")
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(args["shape_predictor"])
 
-l-time facial landmark detection with OpenCV, Python, and dlibPython
+#l-time facial landmark detection with OpenCV, Python, and dlibPython
 
 # import the necessary packages
 from imutils.video import VideoStream
