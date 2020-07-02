@@ -1,7 +1,11 @@
+import face_recognition
+from annoy import AnnoyIndex
 
 NUMBER_OF_TREES = 100
 f = 128
 t = AnnoyIndex(f, 'angular')
+
+paths = ''
 imagePaths = list(paths.list_images('/data'))
 
 def image_encoding(imagePath):
@@ -60,29 +64,28 @@ while True:
             name = known_face_names[matches_id]
         face_names.append(name)
         print(face_names)
-# Sau khi đã locate được khuôn mặt và tên của người có trong database rồi ta sẽ tiến hành show nó lên camera:
- for (top, right, bottom, left), name in zip(face_locations, face_names):
- 
-     # Lúc đầu ra scale nó xuống nhỏ gấu 4 lần để detect faces tốt hơn, bây giờ ta sẽ nhân trả lại tọa độ gốc cho nó
-     top *= 4
-     right *= 4
-     bottom *= 4
-     left *= 4
+    # Sau khi đã locate được khuôn mặt và tên của người có trong database rồi ta sẽ tiến hành show nó lên camera:
+    for (top, right, bottom, left), name in zip(face_locations, face_names):
+        # Lúc đầu ra scale nó xuống nhỏ gấu 4 lần để detect faces tốt hơn, bây giờ ta sẽ nhân trả lại tọa độ gốc cho nó
+        top *= 4
+        right *= 4
+        bottom *= 4
+        left *= 4
 
-     # draw line cho face
-     cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+        # draw line cho face
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
-     # Draw label cho face
-     cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
-     font = cv2.FONT_HERSHEY_DUPLEX
-     cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
-     output_names.append(name)
+        # Draw label cho face
+        cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
+        font = cv2.FONT_HERSHEY_DUPLEX
+        cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
+        output_names.append(name)
 
 
- cv2.imshow('Video', frame)
+cv2.imshow('Video', frame)
 
- if cv2.waitKey(1) & 0xFF == ord('q'):
-     break
+if cv2.waitKey(1) & 0xFF == ord('q'):
+    break
 
- video_capture.release()
- cv2.destroyAllWindows()
+video_capture.release()
+cv2.destroyAllWindows()
