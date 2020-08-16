@@ -8,3 +8,4 @@ traffic-sign/data/Test.tar
 traffic-sign/data/Train.csv
 traffic-sign/data/Train.tar
 traffic-sign/data/*
+MNIST/*
